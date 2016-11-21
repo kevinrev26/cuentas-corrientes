@@ -1,0 +1,58 @@
+<navegacion titulo="contribuyente.titulo"></navegacion>
+
+<md-content layout="column" layout-padding>
+    
+	<form name="contribForm"  layout="column">
+		<md-input-container class="md-block">
+			<label> Ingrese los nombres del contribuyente</label>
+			<input required minlength="2" md-no-asterisk name="inputNombre" ng-model="contribuyente.formData.nombre" type="text" placeholder="Alex Ernesto">
+			<div ng-messages="contribForm.inputNombre.$error" ng-show="contribForm.inputNombre.$dirty" md-auto-hide="false" ng-if="contribForm.inputNombre.$touched" multiple>
+				<div ng-message="required">Este campo es requerido</div>
+				<div ng-message="minlength">El nombre debe ser mayor a dos caracteres</div>
+			</div>
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label>Ingrese los apedillos </label>
+			<input required minlength="2" md-no-asterisk name="inputApellido" ng-model="contribuyente.formData.apellido" type="text" placeholder="Rivera Martinez">
+			<div ng-messages="contribForm.inputApellido.$error" ng-show="contribForm.inputApellido.$dirty" md-auto-hide="false" ng-if="contribForm.inputApellido.$touched" multiple>
+				<div ng-message="required">Este campo es requerido</div>
+				<div ng-message="minlength">El apellido debe ser mayor a dos caracteres</div>
+			</div>
+        </md-input-container>
+		<md-input-container>
+			<label>Ingrese el numero de identificacion tributaria</label>
+			<input required minlength="12" maxlength="12" ng-pattern="/^[0-9]+$/" md-no-asterisk name="inputNit" ng-model="contribuyente.formData.nit" type="text" placeholder="91426079371213">
+			<div ng-messages="contribForm.inputNit.$error" ng-show="contribForm.inputNit.$dirty" multiple>
+				<div ng-message="required">El NIT es requerido para ingresar un contribuyente</div>
+				<div ng-message="minlength">Numero invalido, ingrese los 12 digitos</div>
+				<div ng-message="maxlength">Numero invalido, ingrese los 12 digitos</div>
+				<div ng-message="pattern">El nit solo puede contener numeros</div>
+			</div>
+			
+		</md-input-container>
+		<md-input-container>
+			<label>Telefono </label>
+			<input required minlength="8" maxlength="8" ng-pattern="/^[0-9]+$/"  md-no-asterisk name="inputTelefono" ng-model="contribuyente.formData.telefono" type="text" placeholder="xxxxyyyy">
+			<div ng-messages="contribForm.inputTelefono.$error" ng-show="contribForm.inputTelefono.$dirty" multiple>
+				<div ng-message="required">El telefono es obligatorio</div>
+				<div ng-message="minlength">Debe contener 8 digitos</div>
+				<div ng-message="maxlength">Debe contener 8 digitos</div>
+				<div ng-message="pattern">No puede contener caracteres alfanumericos</div>
+			</div>
+		</md-input-container>
+		<md-input-container>
+			<label>Correo Electronico </label>
+			<input required minlength="5" md-no-asterisk name="inputEmail" ng-model="contribuyente.formData.email" type="email" placeholder="kevin@example.com"> 
+			<div ng-messages="contribForm.inputEmail.$error" ng-show="contribForm.inputEmail.$dirty" multiple>
+				<div ng-message="required">El campo de correo es requerido</div>
+				<div ng-message="email">Direccion de correo invalida</div>
+			</div>
+		</md-input-container>
+        <div layout="row">
+            <div flex="40"></div>
+		      <md-button flex="20" class="md-raised md-warn" ng-disabled="contribForm.$invalid" ng-click="contribuyente.enviarFormulario()">Agregar nuevo</md-button>
+            <div flex="40"></div>
+        </div>
+	</form>
+	
+</md-content>

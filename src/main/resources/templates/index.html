@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="catastro" ng-cloak="" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Alcaldia de San Salvador</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+    
+            
+            
+    </head>
+    <body>
+        <div ng-view="">
+            
+        </div>
+
+        
+        
+        <!--Dependencias de terceros-->
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <script src="bower_components/angular-material/angular-material.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/angular-base64/angular-base64.min.js"></script>
+        <!--modulo de configuracion general-->
+        <!--directiva para la navegacion-->
+        <script src="src/app/app.js"></script>
+        <script src="src/app/directivas/navegacion.directive.js"></script>
+        <script src="src/app/controladores/sidenav.controller.js"></script>
+        <script src="src/app/servicios/contribuyente.service.js"></script>
+        <script src="src/app/servicios/inmueble.service.js"></script>
+        <script src="src/app/servicios/tasas.service.js"></script>                
+        <!--modulo de login-->
+        <script src="src/login/login.js"></script>
+        <!--Controlador de login-->
+        <script src="src/login/controladores/login.controller.js"></script> 
+        
+        <!--Modulo del dashboard-->
+        <script src="src/dashboard/dashboard.js"></script>
+        <script src="src/dashboard/controladores/dashboard.controller.js"></script>       
+        <!--Modulo contribuyente -->
+        <script src="src/contribuyente/contribuyente.js"></script>
+        <script src="src/contribuyente/controladores/contribuyente.controller.js"></script>
+        <script src="src/contribuyente/controladores/list-contrib.controller.js"></script>
+        
+        <!--Modulo de impuestos-->
+        <script src="src/tasas/tasas.js"></script>
+        <script src="src/tasas/controladores/agregarTasa.controller.js"></script>
+	<script src="src/tasas/controladores/listarTasas.controller.js"></script>
+		
+		
+	<!--Modulo de inmueble-->
+	<script src="src/inmueble/inmueble.js"></script> 
+	<script src="src/inmueble/controladores/agregarInmueble.controller.js"></script> 
+	<script src="src/inmueble/controladores/buscarInmueble.controller.js"></script>
+	<script src="src/inmueble/controladores/detalleInmueble.controller.js"></script>
+	
+	<!--Modulo de solicitudes-->
+	<script src="src/solicitud/solicitud.js"></script>
+	<script src="src/solicitud/controladores/agregar-solicitud.controller.js"></script>
+        
+        <!--Modulo principal-->
+        <script src="src/catastro.js"></script>
+        
+        
+    </body>
+</html>
