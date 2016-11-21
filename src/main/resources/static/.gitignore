@@ -8,7 +8,7 @@
 
 .brackets.json
 /component.json
-/bower_components
+bower_components/*
 /test/sample
 !/test/sample/bower.json
 /npm-shrinkwrap.json
