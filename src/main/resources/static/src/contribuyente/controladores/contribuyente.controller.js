@@ -9,7 +9,7 @@
 function contribuyente($route, $mdDialog , contribService){
 	var contribuyente = this;
 	contribuyente.titulo = "Agregar un nuevo contribuyente";
-	contribuyente.nombre = "Kevin Rivera"
+	
 	
 	contribuyente.enviarFormulario = function (){
         
@@ -18,8 +18,8 @@ function contribuyente($route, $mdDialog , contribService){
             .then(function(result){
                 //console.log(result);
                 alert = $mdDialog.alert({
-                    title: '¡Bien"',
-                    textContent: 'Agregado con éxito un nuevo contribuyente',
+                    title: '¡Bien!',
+                    textContent: result.data.mensaje,
                     ok: 'Ok'
                 });
             
