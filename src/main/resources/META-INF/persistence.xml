@@ -10,6 +10,7 @@
     <class>com.ues.igf9.modelos.CuentaCorriente</class>
     <class>com.ues.igf9.modelos.Inmueble</class>
     <class>com.ues.igf9.modelos.Tasa</class>
+    <class>com.ues.igf9.modelos.Interes</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/catastro"/>
       <property name="javax.persistence.jdbc.user" value="kevin"/>

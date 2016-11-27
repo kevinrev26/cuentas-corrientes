@@ -291,6 +291,16 @@ create  index MODIFICA_FK on TRASPASO (
 CLAVECATASTRAL
 );
 
+/*==================================================*/
+/* Table: INTERES                                   */
+/*==================================================*/
+
+create table INTERES(
+    IDINTERES INT4 NOT NULL,
+    TASA FLOAT8 NOT NULL,
+    constraint PK_INTERES primary key (IDINTERES)
+);
+
 alter table CUENTA_CORRIENTE
    add constraint FK_CUENTA_C_TIENE_CONTRIBU foreign key (NUMEROCONTRIBUYENTE)
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
@@ -336,3 +346,4 @@ alter table TRASPASO
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
       on delete restrict on update restrict;
 
+INSERT INTO INTERES(IDINTERES, tasa) VALUES(1,0.03);
