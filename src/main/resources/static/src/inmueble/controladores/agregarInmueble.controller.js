@@ -8,19 +8,6 @@
 function agregarInmueble(inmuebleService){
 	var vm = this;
 	vm.titulo = "Agregar inmueble";
-	vm.tiposInmuebles = [
-		'Habitacional',
-		'Condominio',
-		'Previo baldio'
-	];
-	
-	vm.alumbrado = [
-		'A',
-		'B',
-		'C',
-		'D',
-		'E'
-	];
 	
 	vm.enviarFormulario = function(){
 		vm.formData.idContribuyente = {};

@@ -29,7 +29,7 @@ function contribService($http, $base64){
                 data : user,
                 headers: {'Content-Type': 'application/json'}
             });
-	}
+	};
 	
     
     contrib.getUsuarioById = function (id) {
