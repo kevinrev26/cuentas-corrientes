@@ -8,10 +8,9 @@ package com.ues.igf9.controladores;
 import com.ues.igf9.modelos.Contribuyente;
 import com.ues.igf9.modelos.Respuesta;
 import com.ues.igf9.negocio.ContribuyenteService;
-import com.ues.igf9.persistencia.ContribuyenteRepositorio;
 import java.util.List;
 import javax.inject.Inject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,6 +38,11 @@ public class ContribuyenteController {
     @RequestMapping(value="/contribuyentes", method=RequestMethod.GET)
     public List<Contribuyente> getContribuyentes(){
         return contribuyenteService.getContribuyentes();
+    }
+    
+    @RequestMapping(value = "/contribuyentes/{contribuyenteId}", method=RequestMethod.GET)
+    public Contribuyente getContribuyente(@PathVariable Integer contribuyenteId){
+        return contribuyenteService.getContribuyenteById(contribuyenteId);
     }
     
 }

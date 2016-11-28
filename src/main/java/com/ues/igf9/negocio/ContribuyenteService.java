@@ -33,4 +33,8 @@ public class ContribuyenteService {
         return cr.findAll();
     }
     
+    public Contribuyente getContribuyenteById(Integer id){
+        return cr.findOne(id);
+    }
+    
 }

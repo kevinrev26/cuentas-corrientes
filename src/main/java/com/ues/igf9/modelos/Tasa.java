@@ -5,9 +5,11 @@
  */
 package com.ues.igf9.modelos;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -46,7 +48,8 @@ public class Tasa implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "valor")
     private Double valor;
-    @ManyToMany(mappedBy = "tasaList")
+    @ManyToMany(mappedBy = "tasaList", cascade = CascadeType.MERGE)
+    @JsonBackReference
     private List<Inmueble> inmuebleList;
 
     public Tasa() {

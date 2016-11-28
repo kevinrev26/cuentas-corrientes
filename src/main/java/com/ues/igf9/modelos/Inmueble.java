@@ -5,6 +5,7 @@
  */
 package com.ues.igf9.modelos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -67,10 +68,11 @@ public class Inmueble implements Serializable {
     @Size(max = 250)
     @Column(name = "observacion")
     private String observacion;
+    @ManyToMany(targetEntity = Tasa.class, cascade = CascadeType.MERGE)
     @JoinTable(name = "detalle_tasa", joinColumns = {
         @JoinColumn(name = "clavecatastral", referencedColumnName = "clavecatastral")}, inverseJoinColumns = {
         @JoinColumn(name = "codigo", referencedColumnName = "codigo")})
-    @ManyToMany
+    @JsonManagedReference
     private List<Tasa> tasaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clavecatastral")
     private List<Traspaso> traspasoList;
