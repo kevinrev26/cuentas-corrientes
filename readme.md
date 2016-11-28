@@ -4,6 +4,8 @@ Sistema informático desarrollado en Spring, utilizando AngularJS para consumir 
  - [Requisitos](#requisitos)
  - [Instalación](#instalacion)
  - [Ejecución](#ejecucion)
+
+
 ### Requisitos
 Las versiones de las siguientes herramientas son necesarias para la configuración y ejecución del proyecto:
 ```
@@ -53,7 +55,6 @@ Si todo ha ido acorde y no se ha mostrado ningun error a la hora de instalar y c
 Lo cual generará una impresión en consola que indica el booteo de Spring, el proceso se detiene y se monta el servidor embebido para escuchar peticiones en el puerto 8000 (Siempre y cuando no se haya modificado esa propiedad en el archivo application.properties), se debe ingresar a la dirección correspondiente para iniciar la aplicación 
 
 Alternativamente si se tiene Apache Maven instalado, se ejecuta la siguiente orden dentro de la raíz del proyecto:
-
     ```
     $ mvn spring-boot:run
     ```
