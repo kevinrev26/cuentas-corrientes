@@ -32,8 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Traspaso.findAll", query = "SELECT t FROM Traspaso t"),
     @NamedQuery(name = "Traspaso.findByIdtraspaso", query = "SELECT t FROM Traspaso t WHERE t.idtraspaso = :idtraspaso"),
-    @NamedQuery(name = "Traspaso.findByFechatraspaso", query = "SELECT t FROM Traspaso t WHERE t.fechatraspaso = :fechatraspaso"),
-    @NamedQuery(name = "Traspaso.findByDescripcion", query = "SELECT t FROM Traspaso t WHERE t.descripcion = :descripcion")})
+    @NamedQuery(name = "Traspaso.findByFechatraspaso", query = "SELECT t FROM Traspaso t WHERE t.fechatraspaso = :fechatraspaso")})
 public class Traspaso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,9 +47,6 @@ public class Traspaso implements Serializable {
     @Column(name = "fechatraspaso")
     @Temporal(TemporalType.DATE)
     private Date fechatraspaso;
-    @Size(max = 250)
-    @Column(name = "descripcion")
-    private String descripcion;
     @JoinColumn(name = "numerocontribuyente", referencedColumnName = "numerocontribuyente")
     @ManyToOne(optional = false)
     private Contribuyente numerocontribuyente;
@@ -84,14 +80,6 @@ public class Traspaso implements Serializable {
 
     public void setFechatraspaso(Date fechatraspaso) {
         this.fechatraspaso = fechatraspaso;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public Contribuyente getNumerocontribuyente() {

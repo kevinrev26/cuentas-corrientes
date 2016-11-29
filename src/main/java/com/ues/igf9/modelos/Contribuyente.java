@@ -81,6 +81,8 @@ public class Contribuyente implements Serializable {
     private List<CuentaCorriente> cuentaCorrienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
     private List<PlanDePago> planDePagoList;
+    @OneToMany(mappedBy = "propietario")
+    private List<Inmueble> inmuebleList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
     private List<Pago> pagoList;
 
@@ -181,6 +183,15 @@ public class Contribuyente implements Serializable {
 
     public void setPlanDePagoList(List<PlanDePago> planDePagoList) {
         this.planDePagoList = planDePagoList;
+    }
+
+    @XmlTransient
+    public List<Inmueble> getInmuebleList() {
+        return inmuebleList;
+    }
+
+    public void setInmuebleList(List<Inmueble> inmuebleList) {
+        this.inmuebleList = inmuebleList;
     }
 
     @XmlTransient

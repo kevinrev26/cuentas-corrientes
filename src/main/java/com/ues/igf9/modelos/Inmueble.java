@@ -7,7 +7,6 @@ package com.ues.igf9.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
@@ -19,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -79,12 +79,13 @@ public class Inmueble implements Serializable {
     @JoinTable(name = "detalle_tasa", joinColumns = {
         @JoinColumn(name = "clavecatastral", referencedColumnName = "clavecatastral")}, inverseJoinColumns = {
         @JoinColumn(name = "codigo", referencedColumnName = "codigo")})
-    //@JsonManagedReference
     private List<Tasa> tasaList;
-    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clavecatastral")
     @JsonIgnore
     private List<Traspaso> traspasoList;
+    @JoinColumn(name = "propietario", referencedColumnName = "numerocontribuyente")
+    @ManyToOne
+    private Contribuyente propietario;
 
     public Inmueble() {
     }
@@ -165,6 +166,14 @@ public class Inmueble implements Serializable {
 
     public void setTraspasoList(List<Traspaso> traspasoList) {
         this.traspasoList = traspasoList;
+    }
+
+    public Contribuyente getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Contribuyente propietario) {
+        this.propietario = propietario;
     }
 
     @Override

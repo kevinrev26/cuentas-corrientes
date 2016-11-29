@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     24/11/2016 11:16:31 a.m.                     */
+/* Created on:     27/11/2016 10:30:30 a.m.                     */
 /*==============================================================*/
 
 
@@ -28,9 +28,15 @@ drop index DETALLE_TASA_PK;
 
 drop table DETALLE_TASA;
 
+drop index ADQUIERE_FK;
+
 drop index INMUEBLE_PK;
 
 drop table INMUEBLE;
+
+drop index INTERES_PK;
+
+drop table INTERES;
 
 drop index INVOLUCRA_FK;
 
@@ -166,6 +172,7 @@ CODIGO
 /*==============================================================*/
 create table INMUEBLE (
    CLAVECATASTRAL       INT4                 not null,
+   PROPIETARIO          INT4                 null,
    DIRECCIONINMUEBLE    VARCHAR(250)         not null,
    AREASUPERFICIAL      FLOAT8               not null,
    METROSLINEALES       FLOAT8               not null,
@@ -179,6 +186,29 @@ create table INMUEBLE (
 /*==============================================================*/
 create unique index INMUEBLE_PK on INMUEBLE (
 CLAVECATASTRAL
+);
+
+/*==============================================================*/
+/* Index: ADQUIERE_FK                                           */
+/*==============================================================*/
+create  index ADQUIERE_FK on INMUEBLE (
+PROPIETARIO
+);
+
+/*==============================================================*/
+/* Table: INTERES                                               */
+/*==============================================================*/
+create table INTERES (
+   IDINTERES            INT4                 not null,
+   TASA                 FLOAT8               not null,
+   constraint PK_INTERES primary key (IDINTERES)
+);
+
+/*==============================================================*/
+/* Index: INTERES_PK                                            */
+/*==============================================================*/
+create unique index INTERES_PK on INTERES (
+IDINTERES
 );
 
 /*==============================================================*/
@@ -266,7 +296,6 @@ create table TRASPASO (
    NUMEROCONTRIBUYENTE  INT4                 not null,
    CLAVECATASTRAL       INT4                 not null,
    FECHATRASPASO        DATE                 not null,
-   DESCRIPCION          VARCHAR(250)         null,
    constraint PK_TRASPASO primary key (IDTRASPASO)
 );
 
@@ -291,16 +320,6 @@ create  index MODIFICA_FK on TRASPASO (
 CLAVECATASTRAL
 );
 
-/*==================================================*/
-/* Table: INTERES                                   */
-/*==================================================*/
-
-create table INTERES(
-    IDINTERES INT4 NOT NULL,
-    TASA FLOAT8 NOT NULL,
-    constraint PK_INTERES primary key (IDINTERES)
-);
-
 alter table CUENTA_CORRIENTE
    add constraint FK_CUENTA_C_TIENE_CONTRIBU foreign key (NUMEROCONTRIBUYENTE)
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
@@ -319,6 +338,11 @@ alter table DETALLE_TASA
 alter table DETALLE_TASA
    add constraint FK_DETALLE__POSEE2_INMUEBLE foreign key (CLAVECATASTRAL)
       references INMUEBLE (CLAVECATASTRAL)
+      on delete restrict on update restrict;
+
+alter table INMUEBLE
+   add constraint FK_INMUEBLE_ADQUIERE_CONTRIBU foreign key (PROPIETARIO)
+      references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
       on delete restrict on update restrict;
 
 alter table PAGO
@@ -346,4 +370,5 @@ alter table TRASPASO
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
       on delete restrict on update restrict;
 
-INSERT INTO INTERES(IDINTERES, tasa) VALUES(1,0.03);
+INSERT INTO INTERES VALUES(1, 0.00508);
+
