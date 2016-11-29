@@ -36,6 +36,38 @@
 			</div>
 			
 		</md-input-container>
+                 
+                
+            
+            
+                <md-chips>
+                    <md-chip ng-repeat="tasa in addProperty.tasaList"
+                             ng-click="addProperty.removeTasa(tasa)">
+                        {{tasa.codigo}}
+                    </md-chip>
+                </md-chips>
+                <md-autocomplete
+                md-selected-item="addProperty.selectedItem"
+                md-search-text="addProperty.searchText"
+                md-selected-item-change="addProperty.itemChanged(item)"
+                md-items="item in addProperty.querySearch(addProperty.searchText)"                
+                md-item-text="item.descripciontasa"
+                md-min-length="0"
+                placeholder="Coloque la descripcion de la tasa a agregar">
+                     <md-item-template>
+                       <span md-highlight-text="addProperty.searchText" md-highlight-flags="^i">{{item.descripciontasa}}</span>
+                     </md-item-template>
+                     <md-not-found>
+                       Ninguna tasa con la descripcion "{{addProperty.searchText}}" fue encontrada.
+                     </md-not-found>
+                </md-autocomplete>
+            
+
+            
+           
+
+                
+            
         <md-input-container>
             <label>Observaciones</label>
             <textarea ng-model="addProperty.formData.observacion" name="inputObservaciones" maxlength="200" required
@@ -45,6 +77,9 @@
             
             </div>
         </md-input-container>
+            
+            
+
         
         <md-input-container>
 			<label>Direccion </label>

@@ -5,7 +5,10 @@
  */
 package com.ues.igf9.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -34,6 +37,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Tasa.findByCodigo", query = "SELECT t FROM Tasa t WHERE t.codigo = :codigo"),
     @NamedQuery(name = "Tasa.findByDescripciontasa", query = "SELECT t FROM Tasa t WHERE t.descripciontasa = :descripciontasa"),
     @NamedQuery(name = "Tasa.findByValor", query = "SELECT t FROM Tasa t WHERE t.valor = :valor")})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "codigo"
+)
 public class Tasa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,7 +56,8 @@ public class Tasa implements Serializable {
     @Column(name = "valor")
     private Double valor;
     @ManyToMany(mappedBy = "tasaList", cascade = CascadeType.MERGE)
-    @JsonBackReference
+    //@JsonBackReference
+    @JsonIgnore
     private List<Inmueble> inmuebleList;
 
     public Tasa() {

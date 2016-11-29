@@ -8,11 +8,11 @@ function buscar(inmuebleService){
 	var vm = this;
 	vm.titulo = 'Buscar inmueble';
 	inmuebleService.getInmuebles()
-    .then(function(response){
-        vm.inmuebles = response.data;
-    }, function(Error){
-        console.log(Error);
-    });
+        .then(function(response){
+            vm.inmuebles = response.data;
+        }, function(error){
+            console.log(error);
+        });
 	
 }
 

@@ -5,7 +5,10 @@
  */
 package com.ues.igf9.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -40,6 +43,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Inmueble.findByMetroslineales", query = "SELECT i FROM Inmueble i WHERE i.metroslineales = :metroslineales"),
     @NamedQuery(name = "Inmueble.findByValor", query = "SELECT i FROM Inmueble i WHERE i.valor = :valor"),
     @NamedQuery(name = "Inmueble.findByObservacion", query = "SELECT i FROM Inmueble i WHERE i.observacion = :observacion")})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "clavecatastral"
+)
 public class Inmueble implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -72,9 +79,11 @@ public class Inmueble implements Serializable {
     @JoinTable(name = "detalle_tasa", joinColumns = {
         @JoinColumn(name = "clavecatastral", referencedColumnName = "clavecatastral")}, inverseJoinColumns = {
         @JoinColumn(name = "codigo", referencedColumnName = "codigo")})
-    @JsonManagedReference
+    //@JsonManagedReference
     private List<Tasa> tasaList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "clavecatastral")
+    @JsonIgnore
     private List<Traspaso> traspasoList;
 
     public Inmueble() {
