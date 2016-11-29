@@ -5,6 +5,7 @@
  */
 package com.ues.igf9.persistencia;
 
+import com.ues.igf9.modelos.Contribuyente;
 import com.ues.igf9.modelos.CuentaCorriente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,4 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface CuentaCorrienteRepositorio extends JpaRepository<CuentaCorriente, Integer>{
     
+    
+    CuentaCorriente findBynumerocontribuyente(Contribuyente numerocontribuyente);
 }

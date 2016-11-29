@@ -5,6 +5,9 @@
  */
 package com.ues.igf9.modelos;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -39,6 +42,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Contribuyente.findByDireccion", query = "SELECT c FROM Contribuyente c WHERE c.direccion = :direccion"),
     @NamedQuery(name = "Contribuyente.findByTelefono", query = "SELECT c FROM Contribuyente c WHERE c.telefono = :telefono"),
     @NamedQuery(name = "Contribuyente.findByCorreoelectronico", query = "SELECT c FROM Contribuyente c WHERE c.correoelectronico = :correoelectronico")})
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "numerocontribuyente"
+)
 public class Contribuyente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -76,14 +83,19 @@ public class Contribuyente implements Serializable {
     @Column(name = "correoelectronico")
     private String correoelectronico;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
+    @JsonIgnore    
     private List<Traspaso> traspasoList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
+    @JsonIgnore
     private List<CuentaCorriente> cuentaCorrienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
+    @JsonIgnore
     private List<PlanDePago> planDePagoList;
     @OneToMany(mappedBy = "propietario")
+    @JsonIgnore
     private List<Inmueble> inmuebleList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
+    @JsonIgnore
     private List<Pago> pagoList;
 
     public Contribuyente() {
