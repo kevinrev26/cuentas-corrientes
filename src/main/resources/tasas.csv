@@ -1,0 +1,9 @@
+111,"Inmuebles con areas igual o mayor a 1,000 metros cuadrados",0.0357
+112,Inmuebles con areas comprendidas entre 500 m² y meos de 1000 m2 ,0.0328
+121,"inmuebles con areas iguales o mayores a 1,000 m²",0.0893
+122,inmuebles con areas comprendidas entre 500 y menos de 100 m²,0.0883
+131,Inmuebles con construccion individuales o en condominio con areas menores a los 70 m² destinado a vivienda,0.0045
+133,"inmuebles con construccion individuales o en condominio destinado para comercio, industria, etc, con area menor a  70m2",0.0096
+211,inmuebles con uso habitacional de 0.0 hasta menores que 70 m² ,0.64
+212,inmuebles con uso habitacional de 70.00 hasta menores de 200.00 m² por cada m² ,0.0126
+221,Inmuebles destinados para comercio industria y/o servicios,0.0280
