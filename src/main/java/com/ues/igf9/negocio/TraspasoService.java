@@ -49,22 +49,19 @@ public class TraspasoService {
             cc.setFechaultimopago(t.getFechatraspaso());
             cc.setNumerocontribuyente(t.getNumerocontribuyente());
             ccr.save(cc);
-            if(propietarioAnterior != null){
-                CuentaCorriente cuentaPropietarioAnterior = ccr.findBynumerocontribuyente(propietarioAnterior);
-                quitarTasas(cuentaPropietarioAnterior , i);
-            }
             mensaje = mensaje + " Cuenta corriente generada para el contribuyente: " + t.getNumerocontribuyente().getNumerocontribuyente();
-        } else {
-            
+        } else {            
             Double nuevatasa = cc.getTasamensual() + calculoTasaMensual(i);
             cc.setTasamensual(nuevatasa);
             ccr.save(cc);
-            
-            CuentaCorriente cuentaPropietarioAnterior = ccr.findBynumerocontribuyente(propietarioAnterior);
-            quitarTasas(cuentaPropietarioAnterior , i);
             mensaje = mensaje + " Actualizado el nuevo importe mensual para la cuenta: " + cc.getIdcuentacorriente();
         }        
-                
+        
+        if(propietarioAnterior != null){
+            CuentaCorriente cuentaPropietarioAnterior = ccr.findBynumerocontribuyente(propietarioAnterior);
+            quitarTasas(cuentaPropietarioAnterior , i);
+        }
+        
         i.setPropietario(t.getNumerocontribuyente());
         inr.save(i);
         return mensaje;

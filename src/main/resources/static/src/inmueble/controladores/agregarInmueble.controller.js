@@ -5,9 +5,8 @@
 * Controlador para agregar un nuevo inmueble
 */
 
-function agregarInmueble(inmuebleService, tasaService){
+function agregarInmueble($route, $mdDialog, inmuebleService, tasaService){
 	var vm = this;
-        var arrayAux = [];
 	vm.titulo = "Agregar inmueble";
         vm.querySearch = querySearch;
        // vm.tasaList = [];
@@ -46,8 +45,19 @@ function agregarInmueble(inmuebleService, tasaService){
                 vm.formData.tasaList = vm.tasaList;
                 inmuebleService.addInmueble(vm.formData)
                 .then(function(result){
-                    console.log("Codigo: " + result.status);
-                    console.log(result.data);
+                    
+                    alert = $mdDialog.alert({
+                        title: '¡Bien!',
+                        textContent: result.data.mensaje,
+                        ok: 'Ok'
+                    });
+            
+                    $mdDialog.show( alert )
+                        .finally(function () {
+                        alert = undefined;
+                    });
+            
+                    $route.reload();
                 }, function(error){
                     console.log(error);
                 });
@@ -74,4 +84,4 @@ function agregarInmueble(inmuebleService, tasaService){
 }
 
 angular.module('catastro.inmueble')
-	.controller('agregarInmuebleCtrl', ['inmuebleService', 'tasaService', agregarInmueble]);
+	.controller('agregarInmuebleCtrl', ['$route', '$mdDialog', 'inmuebleService', 'tasaService', agregarInmueble]);
