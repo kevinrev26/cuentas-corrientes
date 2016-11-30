@@ -40,22 +40,26 @@ public class TraspasoService {
         
         Inmueble i = inr.findOne(t.getClavecatastral().getClavecatastral());
         CuentaCorriente cc = ccr.findBynumerocontribuyente(t.getNumerocontribuyente());        
-        
+        Contribuyente propietarioAnterior = i.getPropietario();
         if(cc == null){
             cc = new CuentaCorriente();
             cc.setInteres(0);
-            cc.setSaldoacumulado(0);
+            cc.setSaldoacumulado(calculoTasaMensual(i));
             cc.setTasamensual(calculoTasaMensual(i));
             cc.setFechaultimopago(t.getFechatraspaso());
             cc.setNumerocontribuyente(t.getNumerocontribuyente());
             ccr.save(cc);
+            if(propietarioAnterior != null){
+                CuentaCorriente cuentaPropietarioAnterior = ccr.findBynumerocontribuyente(propietarioAnterior);
+                quitarTasas(cuentaPropietarioAnterior , i);
+            }
             mensaje = mensaje + " Cuenta corriente generada para el contribuyente: " + t.getNumerocontribuyente().getNumerocontribuyente();
         } else {
             
             Double nuevatasa = cc.getTasamensual() + calculoTasaMensual(i);
             cc.setTasamensual(nuevatasa);
             ccr.save(cc);
-            Contribuyente propietarioAnterior = i.getPropietario();
+            
             CuentaCorriente cuentaPropietarioAnterior = ccr.findBynumerocontribuyente(propietarioAnterior);
             quitarTasas(cuentaPropietarioAnterior , i);
             mensaje = mensaje + " Actualizado el nuevo importe mensual para la cuenta: " + cc.getIdcuentacorriente();

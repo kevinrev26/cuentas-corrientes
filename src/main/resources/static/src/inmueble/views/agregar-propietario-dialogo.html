@@ -18,12 +18,16 @@
           <md-input-container>
             <input ng-model="id">
           </md-input-container>
-            <md-button ng-click="buscar()">
-                Buscar
-            </md-button>
-          <h2>Nombre: {{contr.nombre}}</h2>
-          <h2>NIT: {{contr.nit}}</h2>
-          <h2 class="md-warn" nf-if="error">{{error}}</h2>
+        <md-button ng-click="buscar()">
+            Buscar
+        </md-button>
+        <div ng-if="!contr"> <strong>Ingrese el numero de contribuyente</strong> </div>
+        <div ng-if="contr">
+            <h2>Nombre: {{contr.nombre}}</h2>
+            <h2>Apellidos: {{contr.apellido}}</h2>
+            <h2>NIT: {{contr.nit}}</h2>            
+        </div>
+        <h2 class="md-warn" ng-if="error">{{error}}</h2>
       </div>
     </md-dialog-content>
 

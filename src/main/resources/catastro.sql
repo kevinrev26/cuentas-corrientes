@@ -323,52 +323,52 @@ CLAVECATASTRAL
 alter table CUENTA_CORRIENTE
    add constraint FK_CUENTA_C_TIENE_CONTRIBU foreign key (NUMEROCONTRIBUYENTE)
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table CUOTA
    add constraint FK_CUOTA_CANCELA_PLAN_DE_ foreign key (IDENTIFICADORPLAN)
       references PLAN_DE_PAGO (IDENTIFICADORPLAN)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table DETALLE_TASA
    add constraint FK_DETALLE__POSEE_TASA foreign key (CODIGO)
       references TASA (CODIGO)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table DETALLE_TASA
    add constraint FK_DETALLE__POSEE2_INMUEBLE foreign key (CLAVECATASTRAL)
       references INMUEBLE (CLAVECATASTRAL)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table INMUEBLE
    add constraint FK_INMUEBLE_ADQUIERE_CONTRIBU foreign key (PROPIETARIO)
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table PAGO
    add constraint FK_PAGO_EFECTUA_CONTRIBU foreign key (NUMEROCONTRIBUYENTE)
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table PAGO
    add constraint FK_PAGO_INVOLUCRA_CUOTA foreign key (IDCUOTA)
       references CUOTA (IDCUOTA)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table PLAN_DE_PAGO
    add constraint FK_PLAN_DE__CONVIENE_CONTRIBU foreign key (NUMEROCONTRIBUYENTE)
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table TRASPASO
    add constraint FK_TRASPASO_MODIFICA_INMUEBLE foreign key (CLAVECATASTRAL)
       references INMUEBLE (CLAVECATASTRAL)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 alter table TRASPASO
    add constraint FK_TRASPASO_TRAMITA_CONTRIBU foreign key (NUMEROCONTRIBUYENTE)
       references CONTRIBUYENTE (NUMEROCONTRIBUYENTE)
-      on delete restrict on update restrict;
+      on delete cascade on update cascade;
 
 INSERT INTO INTERES VALUES(1, 0.00508);
 

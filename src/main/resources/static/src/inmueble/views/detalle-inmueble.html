@@ -5,31 +5,31 @@
     
 
         <div layout="row">
-            <strong>Clave Catastral: </strong> {{detalleInmueble.Inmueble.claveCatastral}}
+            <strong>Clave Catastral: </strong> {{detalleInmueble.Inmueble.clavecatastral}}
         </div>
         <div layout="row">
-            <strong>Direccion: </strong> {{detalleInmueble.Inmueble.direccion}}
+            <strong>Direccion: </strong> {{detalleInmueble.Inmueble.direccioninmueble}}
         </div>
         <div layout="row">
-            <strong>Tipo de Inmueble: </strong> {{detalleInmueble.Inmueble.tipoInmueble}}
+            <strong>Valor : </strong> ${{detalleInmueble.Inmueble.valor}}
         </div>
         <div layout="row">
-            <strong>Tipo de Alumbrado: </strong> {{detalleInmueble.Inmueble.tipoAlumbrado}}
-        </div>
-<!--         <div layout="row">
-            <strong>¿Comercial?: {{detalleInmueble.Inmueble.comercio}}</strong>
-        </div>-->
-        <div layout="row">
-            <strong>Valor ($): </strong> {{detalleInmueble.Inmueble.valor}}
+            <strong>Metros de frente: </strong> {{detalleInmueble.Inmueble.metroslineales}} m
         </div>
         <div layout="row">
-            <strong>Metros de frente: </strong> {{detalleInmueble.Inmueble.metros}}
+            <strong>Superficie: </strong> {{detalleInmueble.Inmueble.areasuperficial}} m
         </div>
         <div layout="row">
-            <strong>Superficie: </strong> {{detalleInmueble.Inmueble.superficie}}
+            <strong>Nombre del propietario actual: </strong> {{detalleInmueble.Inmueble.propietario.nombre + " " 
+                                                     + detalleInmueble.Inmueble.propietario.apellido}}
+            
+        </div>
+        <div layout="row">
+            <strong>Numero de contribuyente: </strong> {{detalleInmueble.Inmueble.propietario.nit}}
+            
         </div>
     
-	<md-button class="md-primary md-raised" ng-click="detalleInmueble.agregarPropietario($event)">
-       Agregar un nuevo propietario
-    </md-button>
+    <md-button class="md-primary md-raised" ng-click="detalleInmueble.agregarPropietario($event)">
+       Realizar un traspaso de propiedad
+    </md-button> 
 </md-content>

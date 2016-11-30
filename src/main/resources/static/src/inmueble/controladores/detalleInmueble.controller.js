@@ -4,12 +4,12 @@
 * [Descripcion]
 */
 
-function detalle($scope, $routeParams, $mdDialog, inmuebleService, contribService, $route){
+function detalle($scope, $routeParams, $mdDialog, traspasoService, inmuebleService, contribService, $route){
 	var vm = this;
 	
 	vm.inmuebleId = $routeParams.inmuebleid;
 	vm.titulo = "Clave catastral: " + vm.inmuebleId;
-	console.log(vm.inmuebleId);
+	//console.log(vm.inmuebleId);
 	inmuebleService.getInmuebleById(vm.inmuebleId)
     .then(function (response) {
         vm.Inmueble = response.data;
@@ -27,45 +27,30 @@ function detalle($scope, $routeParams, $mdDialog, inmuebleService, contribServic
 			targetEvent : $event,
 			templateUrl: 'src/inmueble/views/agregar-propietario-dialogo.html',
 			controller: propietarioController,
-            //controllerAs: 'dialogo',
 			clickOutsideToClose: true
 			
 		})
         .then(function(contribuyente){
             
-            //console.log(contribuyente);            
-            inmuebleService.setPropietario(vm.inmuebleId, contribuyente)
-            .then(function(response){
-                alert = $mdDialog.alert({
-                title: '¡Realizado!',
-                textContent: 'Propietario modificado',
-                ok: 'OK'
-            });
-
-            $mdDialog.show( alert )
-                .finally(function() {
-                  alert = undefined;
-            });
+            //console.log(contribuyente);
+            //console.log(vm.Inmueble);
             
-            $route.reload();
-            
-            }, function(error){
-                alert = $mdDialog.alert({
-                title: '¡Opps!',
-                textContent: 'Ocurrio algo, vuelva a intentarlo',
-                ok: 'OK'
-            });
-
-            $mdDialog.show( alert )
-                .finally(function() {
-                  alert = undefined;
-            });
-            
-            //$route.reload();
-            
-            });
-            
-            
+            traspasoService.setTraspaso(contribuyente, vm.Inmueble)
+                    .then(function(result){
+                        alert = $mdDialog.alert({
+                            title: '¡Bien!',
+                            textContent: 'Traspaso realizado: ' + result.data.mensaje,
+                            ok: 'Entendido'
+                        });
+                        
+                        $mdDialog.show(alert)
+                                .finally(function(){
+                                    alert = undefined;
+                                });
+                        $route.reload();
+                    }, function(error){
+                        console.log(error);
+                    });
             
         }, function(){
             
@@ -113,4 +98,4 @@ function detalle($scope, $routeParams, $mdDialog, inmuebleService, contribServic
 
 
 angular.module('catastro.inmueble')
-	.controller('detalleInmuebleCtrl', ['$scope', '$routeParams', '$mdDialog','inmuebleService', 'contribService', '$route', detalle]);
+	.controller('detalleInmuebleCtrl', ['$scope', '$routeParams', '$mdDialog', 'traspasoService','inmuebleService', 'contribService', '$route', detalle]);
