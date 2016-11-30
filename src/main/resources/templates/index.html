@@ -10,7 +10,8 @@ and open the template in the editor.
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
-    
+        <link rel="stylesheet" href="css/roboto.css"/>
+        <link rel="stylesheet" href="css/estilo.css"/>
             
             
     </head>
@@ -30,7 +31,6 @@ and open the template in the editor.
         <script src="bower_components/angular-route/angular-route.min.js"></script>
         <script src="bower_components/angular-base64/angular-base64.min.js"></script>
         <!--modulo de configuracion general-->
-        <!--directiva para la navegacion-->
         <script src="src/app/app.js"></script>
         <script src="src/app/directivas/navegacion.directive.js"></script>
         <script src="src/app/controladores/sidenav.controller.js"></script>
@@ -38,14 +38,18 @@ and open the template in the editor.
         <script src="src/app/servicios/inmueble.service.js"></script>
         <script src="src/app/servicios/tasas.service.js"></script>
         <script src="src/app/servicios/traspaso.service.js"></script>
+        <script src="src/app/servicios/cuentas.service.js"></script>
+        <script src="src/app/filtros/fecha.filter.js"></script>
+        <script src="src/app/filtros/mora.filter.js"></script>
+        
         <!--modulo de login-->
         <script src="src/login/login.js"></script>
-        <!--Controlador de login-->
         <script src="src/login/controladores/login.controller.js"></script> 
         
         <!--Modulo del dashboard-->
         <script src="src/dashboard/dashboard.js"></script>
-        <script src="src/dashboard/controladores/dashboard.controller.js"></script>       
+        <script src="src/dashboard/controladores/dashboard.controller.js"></script>
+        
         <!--Modulo contribuyente -->
         <script src="src/contribuyente/contribuyente.js"></script>
         <script src="src/contribuyente/controladores/contribuyente.controller.js"></script>
@@ -66,6 +70,10 @@ and open the template in the editor.
 	<!--Modulo de solicitudes-->
 	<script src="src/solicitud/solicitud.js"></script>
 	<script src="src/solicitud/controladores/agregar-solicitud.controller.js"></script>
+        
+        <!--Modulo cuentas corrientes-->
+        <script src="src/cuentas/cuenta.js"></script> 
+        <script src="src/cuentas/controladores/cuentas.controller.js"></script>
         
         <!--Modulo principal-->
         <script src="src/catastro.js"></script>

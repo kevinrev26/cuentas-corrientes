@@ -4,13 +4,13 @@
     	<md-button class="md-icon-button" ng-click="sidenav.toggleNav()"> 
     		<md-icon md-svg-src="assets/icons/menu.svg" ></md-icon>
     	</md-button>
-        <h2>{{titulo}}</h2>
+        <h2 style="color:#ffffff">{{titulo}}</h2>
         <span flex></span>
 	</div>
 </md-toolbar>
 <md-sidenav md-is-open="sidenav.showNav" class="md-sidenav-left">
 	<md-toolbar layout-padding class="md-medium-tall">
-        <md-button ng-href="/#dashboard"><h2 class="md-toolbar-tools">Menu de herramientas</h2></md-button>
+            <md-button ng-href="/#dashboard"><h2 class="md-toolbar-tools" style="color:#ffffff">Menu de herramientas</h2></md-button>
         
 	</md-toolbar>
     <div>
@@ -19,11 +19,12 @@
 				  <md-item-content md-ink-ripple layout="row">
 				  	
 				  	<md-icon md-svg-src="{{item.icon}}"></md-icon>
+                                        
 				  	 <md-tooltip   md-direction="right">{{item.title}}</md-tooltip>
 				  	 <md-list layout="column">
 				  	 	<md-item ng-repeat="op in item.options">
 				  	 		<md-item-content>
-				  	 			<a ng-href="{{op.url}}">{{op.title}}</a>
+                                                            <md-button md-no-ink class="md-primary" ng-href="{{op.url}}">{{op.title}} </md-button>
 				  	 		</md-item-content>
 				  	 		<md-divider></md-divider>
 				  	 	</md-item>

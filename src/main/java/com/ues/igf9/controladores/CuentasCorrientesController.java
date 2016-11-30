@@ -9,6 +9,7 @@ import com.ues.igf9.modelos.CuentaCorriente;
 import com.ues.igf9.negocio.CuentasCorrientesService;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +30,10 @@ public class CuentasCorrientesController {
         return cuentasCorrientesService.getCuentasCorrientes();
     }
     
+    
+    @RequestMapping(value="/cuentas-corrientes/{id}", method=RequestMethod.GET)
+    public CuentaCorriente getCuentaById(@PathVariable Integer id){
+        return cuentasCorrientesService.getCuentaCorrienteById(id);
+    }
     
 }

@@ -1,0 +1,15 @@
+<navegacion titulo="accounts.titulo"></navegacion>
+<md-content layout="column" layout-padding>
+    <div layout="row" ng-repeat="cuenta in accounts.cuentas">
+        <div flex="20"></div>
+        <div flex="60" layout="column">
+            <div layout="row"><strong>Numero de cuenta: </strong> {{cuenta.idcuentacorriente}}</div>
+            <div layout="row"><strong>Fecha de Ultimo Pago: </strong> {{cuenta.fechaultimopago | formatearFecha}}</div>
+            <div layout="row"><strong>Dias desde el ultimo pago: </strong>{{cuenta.fechaultimopago | formatearPago}}</div>
+            <div layout="row"><strong>Estado de la cuenta: </strong> <md-button md-no-ink ng-if="(cuenta.fechaultimopago | formatearPago)>60" class="md-warn">En mora</md-button></div>
+            <div layout="row"><md-button md-no-ink ng-if="(cuenta.fechaultimopago | formatearPago)<60" class="md-primary">Solvente</md-button></div>
+            <md-divider ng-if="!$last"></md-divider>
+        </div>
+        <div flex="20"></div>
+    </div>
+</md-content>

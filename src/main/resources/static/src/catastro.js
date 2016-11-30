@@ -18,7 +18,8 @@ angular.module('catastro', [
                             'catastro.contribuyente',
                             'catastro.tasas',
                             'catastro.inmueble',
-                            'catastro.solicitud']);
+                            'catastro.solicitud',
+                            'catastro.cuenta']);
 
 
 /*Funcion que especifica las rutas a mapear*/
@@ -65,7 +66,7 @@ function configuracionRutas($routeProvider){
     	controllerAs: 'detalleInmueble'
     })
     .when('/listar-tasas', {
-    	templateUrl: '../static/src/tasas/views/listar-tasas.html',
+    	templateUrl: 'src/tasas/views/listar-tasas.html',
     	controller: 'listarTasasCtrl',
     	controllerAs: 'listTax'
     })
@@ -73,6 +74,11 @@ function configuracionRutas($routeProvider){
     	templateUrl: 'src/solicitud/views/agregar-solicitud.html',
     	controller: 'agregarSolicitudCtrl',
     	controllerAs: 'solicitud'
+    })
+    .when('/cuentas-corrientes',{
+        templateUrl: 'src/cuentas/views/list-cuentas.html',
+        controller: 'listarCuentasCtrl',
+        controllerAs: 'accounts'
     })
     .otherwise({
         redirectTo: '/'
@@ -106,8 +112,8 @@ angular.module('catastro')
 
 //Agregando la funcion de rutas al modulo de la aplicacion
 angular.module('catastro')
-               .config(['$routeProvider', configuracionRutas]);
+    .config(['$routeProvider', configuracionRutas]);
 
 /* Configurando la paleta de colores de la aplicacion */
 angular.module('catastro')
-				.config(['$mdThemingProvider', configurarPaleta]);
+    .config(['$mdThemingProvider', configurarPaleta]);

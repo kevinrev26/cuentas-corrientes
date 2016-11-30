@@ -69,13 +69,17 @@ function sidenav(){
 			]
 		},
 		{
-			'title' : 'REPORTES',
+			'title' : 'CUENTAS CORRIENTES',
 			'icon' : 'assets/icons/analytics.svg',
 			'options' : [
 				{
 					'title' : 'Impresion de estado de cuenta',
 					'url' : '/#estado-de-cuenta'
-				}
+				},
+                                {
+                                        'title': 'Buscar cuentas corrientes',
+                                        'url': '/#cuentas-corrientes'
+                                }
 			]
 		},
 		{
@@ -93,9 +97,10 @@ function sidenav(){
 			]
 		}
 	];
+       
 	side.showNav = false;
 	side.toggleNav = function (){
-		console.log('toggle-function');
+		//console.log('toggle-function');
 		side.showNav = !side.showNav;
 	};
 	

@@ -26,4 +26,8 @@ public class CuentasCorrientesService {
         return ccr.findAll();
     }
     
+    public CuentaCorriente getCuentaCorrienteById(Integer id){
+        return ccr.findOne(id);
+    }
+    
 }
