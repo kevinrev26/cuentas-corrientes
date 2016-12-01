@@ -85,14 +85,12 @@ public class Contribuyente implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
     @JsonIgnore    
     private List<Traspaso> traspasoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
-    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")    
     private List<CuentaCorriente> cuentaCorrienteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
     @JsonIgnore
     private List<PlanDePago> planDePagoList;
-    @OneToMany(mappedBy = "propietario")
-    @JsonIgnore
+    @OneToMany(mappedBy = "propietario")    
     private List<Inmueble> inmuebleList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "numerocontribuyente")
     @JsonIgnore
