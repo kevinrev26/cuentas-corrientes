@@ -6,11 +6,11 @@
 
 function servicioTraspasos($http) {
         var st = this;
-        st.setTraspaso = function (contr, inm){
+        st.setTraspaso = function (data, inm){
             var traspaso = {
                 idtraspaso : makeid(),
-                fechatraspaso : getDate(),
-                numerocontribuyente : contr,
+                fechatraspaso : data.fecha,
+                numerocontribuyente : data.contr,
                 clavecatastral : inm
                 
             };

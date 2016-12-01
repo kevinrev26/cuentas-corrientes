@@ -30,12 +30,12 @@ function detalle($scope, $routeParams, $mdDialog, traspasoService, inmuebleServi
 			clickOutsideToClose: true
 			
 		})
-        .then(function(contribuyente){
+        .then(function(data){
             
             //console.log(contribuyente);
             //console.log(vm.Inmueble);
             
-            traspasoService.setTraspaso(contribuyente, vm.Inmueble)
+            traspasoService.setTraspaso(data, vm.Inmueble)
                     .then(function(result){
                         alert = $mdDialog.alert({
                             title: '¡Bien!',
@@ -77,14 +77,14 @@ function detalle($scope, $routeParams, $mdDialog, traspasoService, inmuebleServi
           $mdDialog.cancel();  
         };
         
-        $scope.propietario = function (contribuyente) {
-            $mdDialog.hide(contribuyente);
+        $scope.propietario = function (data) {
+            $mdDialog.hide(data);
         };
         
         $scope.buscar = function(){
-             contribService.getUsuarioById(parseInt($scope.id))
+             contribService.getUsuarioById(parseInt($scope.formData.id))
              .then(function(result){
-                 $scope.contr = result.data;
+                 $scope.formData.contr = result.data;
              },function(error){
                  $scope.error = error;
              }); 

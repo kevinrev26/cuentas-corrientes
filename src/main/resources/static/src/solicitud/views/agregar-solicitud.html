@@ -7,7 +7,7 @@
 			<div ng-messages="solicitudForm.inputDocumento.$error" ng-show="solicitudForm.inputDocumento.$dirty">
 				<div ng-message="required">Este campo es requerido</div>
 			</div>
-		</md-input-container layout="row">
+		</md-input-container>
 		<md-input-container> 
 			<md-select ng-model="solicitud.formData.tipoTramite" placeholder="Tipo de tramite"> 
 				<md-option ng-value="item" ng-repeat="item in solicitud.tramites"> {{item}} </md-option>
