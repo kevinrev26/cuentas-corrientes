@@ -25,7 +25,7 @@ function sidenav(){
 					'url' : '/#modificar-contribuyente'
 				}*/
 			]
-		},
+		},/*
 		{
 			'title': 'SOLICITUDES',
 			'icon' : 'assets/icons/resume.svg',
@@ -39,7 +39,7 @@ function sidenav(){
 					'url' : '/#solicitud-traspaso'
 				}				
 			]
-		},
+		},*//*
 		{
 			'title': 'TRAMITES CATASTRALES',
 			'icon' : 'assets/icons/earth-globe.svg',
@@ -53,7 +53,7 @@ function sidenav(){
 					'url' : '/#unificacion'
 				},
 			]
-		},
+		},*//*
 		{
 			'title' : 'TASAS',
 			'icon' : 'assets/icons/tax.svg',
@@ -67,7 +67,7 @@ function sidenav(){
 					'url' : '/#listar-tasas'
 				}	
 			]
-		},
+		},*/
 		{
 			'title' : 'CUENTAS CORRIENTES',
 			'icon' : 'assets/icons/analytics.svg',

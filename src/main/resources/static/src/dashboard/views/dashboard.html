@@ -1,9 +1,9 @@
 <navegacion titulo="dashboard.titulo"></navegacion>
 <md-content class="md-padding"  layout="column" layout-padding>
-	<div layout="row" layout-xs="column">
-        <div flex="30"></div>
+	<div layout="row">
+        <div flex="30"></div>        
         <md-card>
-            <img ng-src="/assets/img/equipo.png" class="md-card-image imagen" alt="Washed Out">
+            <img ng-src="/assets/img/equipo.png"  class="md-card-image" alt="Washed Out">
             <md-card-title>
               <md-card-title-text>
                 <span class="md-headline">Agregar contribuyente</span>
@@ -15,31 +15,30 @@
               </p>
             </md-card-content>
             <md-card-actions layout="column" layout-align="start">
-              <md-button ng-href="#/agregar-contribuyente" class="md-raised md-accent">Agregar un nuevo contribuyente</md-button>
+              <md-button ng-href="#/agregar-contribuyente" class="md-raised md-primary">Agregar contribuyente</md-button>
 
             </md-card-actions>
-        </md-card>
-        
+        </md-card>        
         <md-card>
             <img ng-src="/assets/img/shuffle.png" class="md-card-image" alt="Washed Out">
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline">Tramitar traspaso</span>
+                <span class="md-headline">Cuenta corrientes</span>
               </md-card-title-text>
             </md-card-title>
             <md-card-content>
               <p>
-                Realice traspasos de inmuebles de manera rapida y eficiente.
+                Busqueda de cuentas en el sistema
               </p>
             </md-card-content>
             <md-card-actions layout="column" layout-align="start">
-              <md-button ng-href="#/dashboard" class="md-raised md-accent">Realizar traspaso</md-button>
-
+              <md-button ng-href="/#cuentas-corrientes" class="md-raised md-primary">Realizar traspaso</md-button>
             </md-card-actions>
         </md-card>
+        
         <div flex="30"></div>
     </div>
-    <div layout="row" layout-xs="column">
+    <div layout="row">
         <div flex="30"></div>
         <md-card>
             <img ng-src="/assets/img/cityscape.png" class="md-card-image" alt="Washed Out">
@@ -54,7 +53,7 @@
               </p>
             </md-card-content>
             <md-card-actions layout="column" layout-align="start">
-              <md-button ng-href="/#agregar-inmueble" class="md-raised md-accent">Agregar un inmueble</md-button>
+              <md-button ng-href="/#agregar-inmueble" class="md-raised md-primary">Agregar un inmueble</md-button>
 
             </md-card-actions>
         </md-card>
@@ -63,16 +62,16 @@
             <img ng-src="/assets/img/solicitud.png" class="md-card-image" alt="Washed Out">
             <md-card-title>
               <md-card-title-text>
-                <span class="md-headline">Revisar solicitudes de traspaso</span>
+                <span class="md-headline">Busqueda de inmuebles</span>
               </md-card-title-text>
             </md-card-title>
             <md-card-content>
               <p>
-                Revise aquellas solicitudes y verifique el estado de la solicitud de traspasos.
+                Lista los inmuebles almacenados en el sistema
               </p>
             </md-card-content>
             <md-card-actions layout="column" layout-align="start">
-              <md-button class="md-raised md-accent">Action 1</md-button>
+              <md-button ng-href="/#buscar-inmueble" class="md-raised md-primary">Buscar inmueble</md-button>
 
             </md-card-actions>
         </md-card>

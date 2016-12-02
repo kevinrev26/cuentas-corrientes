@@ -10,10 +10,19 @@
     </md-toolbar>
     <md-dialog-content layout="row">
         <div class="md-dialog-content" layout="column">
-            {{cc}}
+            <div layout="row"> <h3>Número de cuenta corriente: </h3> <h4>{{" " + cc.idcuentacorriente }}</h4> </div>
+            <div layout="row"> <h3>Fecha de último pago: </h3> <h4>{{" " + cc.fechaultimopago }}</h4> </div>
+            <div layout="row"> <h3>Interés por mora: </h3> <h4>{{" " + cc.interes }}</h4> </div>
+            <div layout="row"> <h3>Tasa mensual: </h3> <h4>{{" " + cc.tasamensual }}</h4> </div>
+            <div layout="row"> <h3>Saldo acumulado: </h3> <h4>{{" " + cc.saldoacumulado }}</h4> </div>
+            <md-divider></md-divider>
+            <div layout="row"> <h3>Nombre contribuyente: </h3> <h4>{{" " + cc.numerocontribuyente.nombre + " " + cc.numerocontribuyente.nombre }}</h4> </div>
+            <div layout="row"> <h3>Número de contribuyente: </h3> <h4>{{" " + cc.numerocontribuyente.numerocontribuyente }}</h4> </div>
+                <div layout="row"> <h3>Número de Identificación tributaria: </h3> <h4>{{" " + cc.numerocontribuyente.nit }}</h4> </div>
+            
         </div>
         <div>
-            <md-button ng-click="openpdf()">Imprimir aviso de cobro</md-button>
+            <md-button ng-click="openpdf()" ng-disabled="!((cc.fechaultimopago | formatearPago)>60)">Imprimir aviso de cobro</md-button>
         </div>
     </md-dialog-content>
 </md-dialog>

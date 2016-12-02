@@ -6,7 +6,7 @@
         <md-subheader class="md-no-sticky">Inmuebles registrados</md-subheader>
         <md-list-item class="md-3-line" ng-repeat="property in findProperty.inmuebles">
             <div class="md-list-item-text" layout="column">
-                <h3><a ng-href="/#inmueble/{{property.clavecatastral}}">Clave Catastral: {{ property.clavecatastral }}</a></h3>
+                <h3><md-button md-no-ink class="md-primary" ng-href="/#inmueble/{{property.clavecatastral}}">Clave Catastral: {{ property.clavecatastral }}</md-button></h3>
                 <h4>Direccion: {{ property.direccioninmueble }}</h4>
             </div>
         </md-list-item>
